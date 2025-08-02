@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -49,7 +50,7 @@
       text-align: center;
       font-size: 2rem;
       margin-bottom: 1.5rem;
-      color: #0066cc;
+      color: #cc0000;
     }
 
     h3 {
@@ -92,12 +93,60 @@
         margin-top: 1rem;
       }
     }
+    h1 a {
+      text-decoration: none;  /* Removes underline */
+      color: white;           /* Makes text white */
+    }
+
+    h1 a:hover {
+      text-decoration: none;  /* Keeps no underline on hover */
+      color: white;           /* Keeps color white on hover */
+    }
   </style>
 </head>
 <body>
 
+<div id="google_translate_element" style="display:none;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+  function autoTranslateToArabic() {
+    const interval = setInterval(() => {
+      const iframe = document.querySelector("iframe.goog-te-menu-frame");
+      if (iframe) {
+        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const arabicOption = [...innerDoc.querySelectorAll("a")].find(el => el.innerText.includes("Arabic"));
+
+        if (arabicOption) {
+          arabicOption.click();
+          clearInterval(interval);
+        }
+      }
+    }, 500);
+  }
+
+  window.onload = function () {
+    setTimeout(autoTranslateToArabic, 2000); // Delay to allow Google Translate to load
+  };
+</script>
+
+
+
   <header>
-    <h1>AutoIraq</h1>
+    <h1><a href="index.html">AutoIraq</a></h1>
     <nav><a href="index.html">&larr; Back to Home</a></nav>
   </header>
 
